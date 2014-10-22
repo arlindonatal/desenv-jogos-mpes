@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a170689510a31eb4aab46307a34cad70, type: 3}
+  m_Name: Lv0_Sword
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300022, guid: e603067794c2abd48918f0c27bf80210, type: 3}
+  Scale: {x: 2, y: 2, z: 0}
+  ItemName: Level 0 Sword
+  Cost: 0
+  Strength: 5
+  Defense: 0

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93820bf70fe6a4449baf4a3d4ff3f9ce, type: 3}
+  m_Name: GreybeardWarning
+  m_EditorClassIdentifier: 
+  ConversationLines:
+  - SpeakingCharacterName: Greybeard
+    ConversationText: Where do you think your going?
+    DisplayPic: {fileID: 21300012, guid: bbd1ec5f7f976fd4a8b66aeaefe4711f, type: 3}
+  - SpeakingCharacterName: Hero
+    ConversationText: I was wondering what exactly you have in your cave there
+    DisplayPic: {fileID: 21300010, guid: 6eeb38f2302aea14f903d03b347b5785, type: 3}
+  - SpeakingCharacterName: Greybeard
+    ConversationText: Well you can't!!
+    DisplayPic: {fileID: 21300012, guid: bbd1ec5f7f976fd4a8b66aeaefe4711f, type: 3}
+  - SpeakingCharacterName: Greybeard
+    ConversationText: Apart from it being extremely impertinent
+    DisplayPic: {fileID: 21300012, guid: bbd1ec5f7f976fd4a8b66aeaefe4711f, type: 3}
+  - SpeakingCharacterName: Greybeard
+    ConversationText: There are actually lots of horrible beasties down there
+    DisplayPic: {fileID: 21300012, guid: bbd1ec5f7f976fd4a8b66aeaefe4711f, type: 3}
+  - SpeakingCharacterName: Greybeard
+    ConversationText: So go away silly boy!
+    DisplayPic: {fileID: 21300012, guid: bbd1ec5f7f976fd4a8b66aeaefe4711f, type: 3}
+  - SpeakingCharacterName: Hero
+    ConversationText: '!How Rude!'
+    DisplayPic: {fileID: 21300010, guid: 6eeb38f2302aea14f903d03b347b5785, type: 3}
+  Complete: 0
