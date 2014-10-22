@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// editado por jaime
+
+using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
