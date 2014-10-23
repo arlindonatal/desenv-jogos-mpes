@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+	// Testando o merge - exemplo git
     // RidgidBody component instance for the player
     private Rigidbody2D playerRigidBody2D;
 
