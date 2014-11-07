@@ -1,5 +1,5 @@
 ﻿
-public class Enemy : Entity {
+public class Enemy : Attributes {
 
     public EnemyClass Class;
 }

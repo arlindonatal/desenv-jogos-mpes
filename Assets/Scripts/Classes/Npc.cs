@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Npc : Entity
+public class Npc : Attributes
 {
 
 }

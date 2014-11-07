@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-public class Player : Entity
+public class Player : Attributes
 {
     private List<InventoryItem> inventory;
 
