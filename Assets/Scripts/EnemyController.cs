@@ -14,15 +14,23 @@ public class EnemyController : MonoBehaviour {
 	private bool firstcollider = true;
 
 	private float attackStartTime;
-	private float attackDuration = 400f;
+	private float attackDuration = 0.4f;
 
 	private Animator animator;
 
     private bool jump;
 
+	private RaycastHit hit;
+
+	public float damagerDuration = .1f;
+	public float damagerStartTime = 0;
+
+
     private Transform spriteTransform;
     private Transform playerTransform;
     private CharacterController charControl;
+
+	private bool hitPlayer;
 
 	// Use this for initialization
 	void Start () {
@@ -46,7 +54,7 @@ public class EnemyController : MonoBehaviour {
 			}
 			else{
 				Debug.Log("game over");
-				Application.LoadLevel ("MainMenu"); 
+				//Application.LoadLevel ("MainMenu"); 
 			}
         }
 
@@ -122,33 +130,37 @@ public class EnemyController : MonoBehaviour {
 
 
 			Animator a;
-			RaycastHit hit;
-			//Debug.DrawRay(transform.position + new Vector3(0, transform.position.y / 2.0f, 0), fwdVector * 3f, Color.red);
-			if (Physics.Raycast(transform.position + new Vector3(0, transform.position.y / 2.0f, 0), fwdVector, out hit, 3f)) {
-				if (hit.collider.tag == "Player") {
+			
 					
-					if (firstcollider){
+					if (!firstcollider){
 						attackStartTime = Time.time;
-						firstcollider = false;
+						firstcollider = true;
+						animator.SetBool("Attack", false);
+						
 					}
 					
 					if (Time.time - attackStartTime >= attackDuration) {
 						animator.SetBool("Attack", false);
-						a = hit.transform.FindChild("Sprite").GetComponent<Animator>();
-						a.SetBool("Damager", false );
-						firstcollider = true;
+						firstcollider = false;
+						hitPlayer = false;
 					}
-					else{
-						a = hit.transform.FindChild("Sprite").GetComponent<Animator>();
-						animator.SetBool("Attack", true);
-						hit.transform.GetComponent<Entity>().TakeDamage(1, 0);
-						a.SetBool("Damager", true );
-						Debug.Log(":::::::::::::::::::::: LEVANDO DANO :::::::::::::::::::::::");
-						
-					}
-				}
-			}
+					else if (!hitPlayer){
+						if (Physics.Raycast(transform.position + new Vector3(0, transform.position.y / 2.0f, 0), fwdVector, out hit, 3f)) {
+							if (hit.collider.tag == "Player" || hit.collider.tag == "Player(Clone)" || hit.collider.tag == "Friend" || hit.collider.tag == "Friend2" ) {
 
+								hitPlayer = true;
+								animator.SetBool("Attack", true);
+								hit.transform.GetComponent<Entity>().TakeDamage(1);
+								
+							}
+						}
+					}
+				
+			
+
+		if (Time.time - damagerStartTime >= damagerDuration) {
+			animator.SetBool("Damager", false );
+		}
 
         float facing = Mathf.Sign(targetSpeed.x);
         if (targetSpeed.x != 0) {
@@ -159,22 +171,6 @@ public class EnemyController : MonoBehaviour {
         charControl.Move(currentSpeed * Time.deltaTime);
 	}
 
-
-	void OnCollisionEnter(Collision collision) {
-		Animator a;
-		if(collision.gameObject.name == "Player(Clone)"){
-				a = playerTransform.FindChild("Sprite").GetComponent<Animator>();
-				a.SetBool("Damager", true );
-				animator.SetBool("Attack", true);
-				playerTransform.GetComponent<Entity>().TakeDamage(1, 1);
-				return;
-			}
-			else{
-				animator.SetBool("Attack", false);
-				a = playerTransform.FindChild("Sprite").GetComponent<Animator>();
-				a.SetBool("Damager", false );
-			}
-	}
 
 
 

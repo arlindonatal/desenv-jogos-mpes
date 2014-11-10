@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour
     private float movePlayerVector;
 
     // For determining which way the player is currently facing.
-    private bool facingRight;
+    private bool facingRight = true;
 
     // Speed modifier for player movement
     public float speed = 4.0f;

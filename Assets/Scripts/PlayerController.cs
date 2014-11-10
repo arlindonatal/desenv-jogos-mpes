@@ -16,10 +16,13 @@ public class PlayerController : MonoBehaviour {
     private float punchDuration = .4f;
     private int score;
 
+	public float damagerDuration = .1f;
+	public float damagerStartTime = 0;
 
     private bool jumping;
     private bool punching;
     private bool hitEnemy;
+
 
     private LayerMask attackLayerMask = 8 << 1;
 
@@ -97,9 +100,9 @@ public class PlayerController : MonoBehaviour {
                 RaycastHit hit;
                 //Debug.DrawRay(transform.position + new Vector3(0, transform.position.y / 2.0f, 0), fwdVector * 3f, Color.red);
                 if (Physics.Raycast(transform.position + new Vector3(0, transform.position.y / 2.0f, 0), fwdVector, out hit, 3f)) {
-                    if (hit.collider.tag == "Enemy") {
+					if (hit.collider.tag == "Enemy" || hit.collider.tag == "Enemy(Clone)") {
                         hitEnemy = true;
-                        hit.transform.GetComponent<Entity>().TakeDamage(1, 1);
+                        hit.transform.GetComponent<Entity>().TakeDamage(1);
                         Debug.Log("punched enemy yeah!!");
                         score++;
                     }
@@ -120,6 +123,11 @@ public class PlayerController : MonoBehaviour {
             spriteTransform.eulerAngles = (facing < 0) ? (Vector3.up * 180) + (Vector3.right * 315) : Vector3.right * 45;
             fwdVector = (facing < 0) ? Vector3.left : Vector3.right;
         }
+
+
+		if (Time.time - damagerStartTime >= damagerDuration) {
+			animator.SetBool("Damager", false );
+		}
 
         charControl.Move(currentSpeed * Time.deltaTime);
 	}
