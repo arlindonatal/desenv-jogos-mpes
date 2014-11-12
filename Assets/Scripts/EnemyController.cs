@@ -54,6 +54,8 @@ public class EnemyController : MonoBehaviour {
 			}
 			else{
 				Debug.Log("game over");
+
+
 				//Application.LoadLevel ("MainMenu"); 
 			}
         }
@@ -75,7 +77,7 @@ public class EnemyController : MonoBehaviour {
             case 0:
 			    targetSpeed = new Vector3(-speed, 0, 0);
                 //need to check for player character set mood if close
-                if(playerTransform != null && (moodTime < 2.0f) && ((playerTransform.position - transform.position).magnitude < 4.0f)) {
+                if(playerTransform != null && (moodTime < 2.0f) && ((playerTransform.position - transform.position).magnitude < 10.0f)) {
                     mood = 2;
                     moodTime = 2.0f;
                     break;
@@ -91,7 +93,7 @@ public class EnemyController : MonoBehaviour {
             case 1:
 				targetSpeed = new Vector3(speed, 0, 0);
                 //need to check for player character set mood if close
-                if (playerTransform != null && (moodTime < 2.0f) && ((playerTransform.position - transform.position).magnitude < 4.0f))
+                if (playerTransform != null && (moodTime < 2.0f) && ((playerTransform.position - transform.position).magnitude < 10.0f))
                 {
 					mood = 2;
                     moodTime = 2.0f;

@@ -7,6 +7,9 @@ public class GameCamera : MonoBehaviour {
     public float minX;
     public float maxX;
     public bool locked;
+	public bool gameover = false;
+	public bool win = false;
+
 	// Use this for initialization
 	void Start () {
         locked = false;
@@ -14,9 +17,55 @@ public class GameCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (!GameObject.Find("Player(Clone)")){
+			gameover = true;
+		}
+
+		if (!GameObject.Find("Enemy(Clone)") && !GameObject.Find("Enemy")){
+			win = true;
+		}
 	
 	}
-	
+
+
+	void OnGUI()
+	{
+		if (gameover)
+		{
+
+
+			//layout start
+			GUI.BeginGroup(
+				new Rect(
+				Screen.width / 2 - 150, 
+				50, 
+				350, 
+				100));
+			
+			//the menu background box
+			GUI.Box(new Rect(0, 0, 300, 300), "");
+			
+			//Dialog detail - updated to get better detail
+			GUI.Label(
+				new Rect(15, 10, 300, 68), 
+				"GAME OVER");
+
+
+			if (GUI.Button(new Rect(10, 50, 100, 50),"New Game"))
+			{
+				NavigationManager.NavigateTo("NewBattle");
+			}
+
+
+
+			
+			//layout end
+			GUI.EndGroup();
+		}
+
+	}
+
 	//do cam movement late!
 	void LateUpdate(){
         if (target != null) {

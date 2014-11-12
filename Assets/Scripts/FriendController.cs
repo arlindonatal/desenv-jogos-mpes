@@ -119,19 +119,13 @@ public class FriendController : MonoBehaviour {
 		Vector3 targetSpeed = Vector3.zero;
 	
 
-		targetSpeed = speed * ((playerTransform.position- distancePlayer) - transform.position).normalized;
+		targetSpeed = speed * ((playerTransform.position - distancePlayer) - transform.position);
 
 		//Vector3 targetSpeed = new Vector3(Input.GetAxisRaw("Horizontal") * speed, 0, Input.GetAxisRaw("Vertical") * speed);
 		currentSpeed.x = MoveToward(currentSpeed.x, targetSpeed.x, acceleration);
 		currentSpeed.z = MoveToward(currentSpeed.z, targetSpeed.z, acceleration);
 		
-		if (Mathf.Abs(currentSpeed.x) > 0 || Mathf.Abs(currentSpeed.z) > 0) {
-			animator.SetFloat("Speed", 1);
-		}
-		else {
-			animator.SetFloat("Speed", 0);
-		}
-		
+
 		
 		Animator a;
 		
@@ -171,7 +165,10 @@ public class FriendController : MonoBehaviour {
 			spriteTransform.eulerAngles = (facing < 0) ? (Vector3.up * 180) + (Vector3.right * 315) : Vector3.right * 45;
 			fwdVector = (facing < 0) ? Vector3.left : Vector3.right;
 		}
-		
+
+		animator.SetFloat("Speed", playerTransform.FindChild("Sprite").GetComponent<Animator>().GetFloat("Speed"));
+
+
 		charControl.Move(currentSpeed * Time.deltaTime);
 	}
 
